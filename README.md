@@ -173,7 +173,7 @@ For the purposes of running the simulator, the OSC Host is set up at 127.0.0.1:7
 directed here.  OSC Messages for effects should be addresses as:
 
 ```
-/effect/library-effectName/param/paramName value
+/effect/library-effectName/param/paramName/
 ```
 
 For example, changing the parameter is `sRings` in the effect `cortex`, found in the library `morphogen.py` would be
