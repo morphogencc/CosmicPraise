@@ -97,7 +97,7 @@ for p in palettes:
 globalParams = {}
 globalParams["palette"] = 1
 globalParams["spotlightBrightness"] = 0
-effects["morphogen-cortex"]["opacity"] = 1.0
+effects["dewb-demoEffect"]["opacity"] = 1.0
 
 
 #-------------------------------------------------------------------------------
