@@ -169,6 +169,30 @@ In order to use the OSC features, you'll need to install the pyOSC module.
 pip install pyosc --pre
 ```
 
+For the purposes of running the simulator, the OSC Host is set up at 127.0.0.1:7000 -- all OSC messages should be
+directed here.  OSC Messages for effects should be addresses as:
+
+```
+/effect/library-effectName/param/paramName value
+```
+
+For example, changing the parameter is `sRings` in the effect `cortex`, found in the library `morphogen.py` would be
+addressed as:
+
+```
+/effect/morphogen-cortex/param/sRings
+```
+
+Other OSC Endpoints available are:
+
+```
+/effect/library-effectName/opacity/
+/spotlight/motorSpeed/
+/spotlight/brightness/
+/ray/trigger/
+/palette/select
+```
+
 Running the Client Using Pypy and Python Virtual Environments
 -----------------------------------------------
 

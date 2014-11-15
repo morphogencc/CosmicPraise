@@ -95,9 +95,9 @@ for p in palettes:
 
 # set startup effect and palette
 globalParams = {}
-globalParams["palette"] = 2
+globalParams["palette"] = 1
 globalParams["spotlightBrightness"] = 0
-effects["dewb-demoEffect"]["opacity"] = 1.0
+effects["morphogen-cortex"]["opacity"] = 1.0
 
 
 #-------------------------------------------------------------------------------
@@ -234,7 +234,7 @@ if osc_support:
         paletteIndex = int(args[0] * (len(palettes) - 1))
 	globalParams["palette"] = paletteIndex 
 
-    server = ThreadingOSCServer( ("10.0.0.2", 7000) )
+    server = ThreadingOSCServer( ("127.0.0.1", 7000) )
     
     for effectName in effects:
         server.addMsgHandler("/effect/%s/opacity" % effectName, effect_opacity_handler)
@@ -249,7 +249,7 @@ if osc_support:
     thread = Thread(target=server.serve_forever)
     thread.setDaemon(True)
     thread.start()
-    print "Listening for OSC messages on 10.0.0.2:7000"
+    print "Listening for OSC messages on 127.0.0.1:7000"
 
 #-------------------------------------------------------------------------------
 # parse layout file

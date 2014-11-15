@@ -18,18 +18,45 @@ def scaledRGBTupleToHSL(s):
 def HSLToScaledRGBTuple(hsl):
     return convert_color(hsl, sRGBColor).get_value_tuple()
 
+#some utility functions
+def sigmoid(x,center,a):
+    #logistic sigmoid
+    epsilon = 0.0001;
+    
+    min_param_a = 0.0 + epsilon;
+    max_param_a = 1.0 - epsilon;
+    a = max(min_param_a, min(max_param_a, a));
+    a = (1/(1-a) - 1);
+
+    min_center = 0.0 + epsilon;
+    max_center = 1.0 - epsilon;
+    center = max(min_center, min(max_center, center));
+        
+    A = 1.0 / (1.0 + numpy.exp(0 - ((x-center)*a*2.0)));
+    B = 1.0 / (1.0 + numpy.exp(a));
+    C = 1.0 / (1.0 + numpy.exp(0 - a));
+
+    s = (A-B)/(C-B);
+    return s
+
+def delta(x, center, width):
+    p = sigmoid(n,center - width/2,0.98)
+    q = sigmoid(n, center + width/2, 0.98)
+    return p-q
+
 spiralAngle = pi/3.0;
 spiralAngleAlt = 2.0*pi - pi/3.0;
 
+#0.2, 0, 0.3, alt - 0.7
 def cortex(tower, state,
     sVert = 0.0,
-    sHorizon = 0.2,
-    sDiag = 0.3,
+    sHorizon = 0.0,
+    sDiag = 0.0,
     sDiagAlt = 0.0,
     sArms = 0.0,
     sRings = 1.0,
     sSpiral = 0.0,
-    sSpiralAlt = 0.7,
+    sSpiralAlt = 0.0,
     vertPeriod = 0.2,
     horizonPeriod = 0.2,
     diagPeriod = 0.2,
