@@ -183,10 +183,15 @@ addressed as:
 /effect/morphogen-cortex/param/sRings
 ```
 
-Other OSC Endpoints available are:
+To turn an effect on or off, use its opacity address:
 
 ```
 /effect/library-effectName/opacity/
+```
+
+Other OSC endpoints available are:
+
+```
 /spotlight/motorSpeed/
 /spotlight/brightness/
 /ray/trigger/

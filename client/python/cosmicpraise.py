@@ -74,6 +74,7 @@ for x in glob(join(effectsDir, '*.py')):
         try:
             effectDict = importlib.import_module(pkgName)
             for effectName in effectDict.__all__:
+                print effectName
                 effectFunc = getattr(effectDict, effectName)
                 args, varargs, keywords, defaults = inspect.getargspec(effectFunc)
                 params = {} if defaults == None or args == None else dict(zip(reversed(args), reversed(defaults)))
@@ -97,7 +98,7 @@ for p in palettes:
 globalParams = {}
 globalParams["palette"] = 1
 globalParams["spotlightBrightness"] = 0
-effects["dewb-demoEffect"]["opacity"] = 1.0
+effects["morphogen-ring"]["opacity"] = 1.0
 
 
 #-------------------------------------------------------------------------------
